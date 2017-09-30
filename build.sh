@@ -1,2 +1,6 @@
+#!/bin/bash
 cd ./Web/
-dotnet restore && dotnet build
+set -ev
+dotnet restore
+dotnet build -c Release
+cd ..
