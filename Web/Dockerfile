@@ -1,6 +1,5 @@
 FROM microsoft/aspnetcore:1.1
-ARG source
+ADD . /app
 WORKDIR /app
 EXPOSE 80
-COPY ${source:-obj/Docker/publish} .
 ENTRYPOINT ["dotnet", "Shop.dll"]
