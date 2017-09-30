@@ -1,2 +1,2 @@
-cd ./src/Shop/Shop/
+cd ./Web/
 dotnet restore && dotnet build
