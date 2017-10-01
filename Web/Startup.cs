@@ -12,6 +12,8 @@ namespace Shop
 {
     public class Startup
     {
+        private const string CorsPolicyName = "CorsPolicy";
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -32,6 +34,15 @@ namespace Shop
                options.UseNpgsql(connectionString, b => b.MigrationsAssembly(typeof(ShopDbContext).GetTypeInfo().Assembly.GetName().Name)));
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    CorsPolicyName,
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
             services.AddMvc();
         }
 
@@ -50,6 +61,7 @@ namespace Shop
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             ApplyDbMigrations(app);
+            app.UseCors(CorsPolicyName);
             app.UseMvc();
         }
     }
