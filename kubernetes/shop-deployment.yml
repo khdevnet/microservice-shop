@@ -14,4 +14,7 @@ spec:
         - image: 'khdevnet/shop:latest'
           name: shop-api
           ports:
-            - containerPort: 80         
+            - containerPort: 80  
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Staging            
