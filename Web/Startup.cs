@@ -7,6 +7,7 @@ using Shop.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Shop.Data.Repositories;
+using Shop.Application;
 
 namespace Shop
 {
@@ -43,6 +44,12 @@ namespace Shop
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+            // Adds services required for using options.
+            services.AddOptions();
+
+            // Register the IConfiguration instance which MyOptions binds against.
+            services.Configure<DatabaseConnectionSettings>(Configuration.GetSection("ConnectionStrings"));
+
             services.AddMvc();
         }
 
