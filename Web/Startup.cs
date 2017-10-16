@@ -67,7 +67,7 @@ namespace Shop
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            ApplyDbMigrations(app);
+            //ApplyDbMigrations(app);
             app.UseCors(CorsPolicyName);
             app.UseMvc();
         }
