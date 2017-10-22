@@ -37,6 +37,13 @@ namespace Shop.Controllers
             productRepository.Add(product);
         }
 
+        // PUT api/products
+        [HttpPut]
+        public void Put([FromBody]Product product)
+        {
+            productRepository.Edit(product);
+        }
+
         // DELETE api/products/5
         [HttpDelete("{id}")]
         public void Delete(int id)

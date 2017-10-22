@@ -20,6 +20,15 @@ namespace Shop.Data.Repositories
             return product;
         }
 
+        public Product Edit(Product product)
+        {
+            var editProduct = this.Get(product.Id);
+            editProduct.Name = product.Name;
+            editProduct.Price = product.Price;
+            context.SaveChanges();
+            return editProduct;
+        }
+
         public int Delete(int id)
         {
             context.Remove(Get(id));

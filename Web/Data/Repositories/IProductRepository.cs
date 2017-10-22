@@ -11,6 +11,8 @@ namespace Shop.Data.Repositories
 
         Product Add(Product product);
 
+        Product Edit(Product product);
+
         int Delete(int id);
     }
 }
