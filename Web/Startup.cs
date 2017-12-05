@@ -7,11 +7,14 @@ using Shop.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Shop.Data.Repositories;
+using Shop.Application;
 
 namespace Shop
 {
     public class Startup
     {
+        private const string CorsPolicyName = "CorsPolicy";
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -32,6 +35,21 @@ namespace Shop
                options.UseNpgsql(connectionString, b => b.MigrationsAssembly(typeof(ShopDbContext).GetTypeInfo().Assembly.GetName().Name)));
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    CorsPolicyName,
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+            // Adds services required for using options.
+            services.AddOptions();
+
+            // Register the IConfiguration instance which MyOptions binds against.
+            services.Configure<DatabaseConnectionSettings>(Configuration.GetSection("ConnectionStrings"));
+
             services.AddMvc();
         }
 
@@ -49,7 +67,8 @@ namespace Shop
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            ApplyDbMigrations(app);
+            //ApplyDbMigrations(app);
+            app.UseCors(CorsPolicyName);
             app.UseMvc();
         }
     }

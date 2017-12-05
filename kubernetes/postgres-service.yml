@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-db
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5432

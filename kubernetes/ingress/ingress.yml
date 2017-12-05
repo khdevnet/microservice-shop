@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-shop
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: shop-local.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: shop-ui
+          servicePort: 80     
+      - path: /external/
+        backend:
+          serviceName: shop
+          servicePort: 80
