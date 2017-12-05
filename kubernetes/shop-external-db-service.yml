@@ -1,0 +1,9 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: postgres-external
+subsets:
+  - addresses:
+      - ip: 127.0.0.1
+    ports:
+      - port: 5432

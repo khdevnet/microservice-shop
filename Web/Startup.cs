@@ -37,11 +37,11 @@ namespace Shop
 
         public static void ApplyDbMigrations(IApplicationBuilder app)
         {
-            using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<ShopDbContext>();
-                context.Database.Migrate();
-            }
+            //using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    var context = serviceScope.ServiceProvider.GetRequiredService<ShopDbContext>();
+            //    context.Database.Migrate();
+            //}
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
