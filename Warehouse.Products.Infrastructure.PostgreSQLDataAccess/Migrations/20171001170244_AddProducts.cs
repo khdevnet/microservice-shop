@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Shop.Migrations
+namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Migrations
 {
     public partial class AddProducts : Migration
     {

@@ -1,4 +1,4 @@
-﻿namespace Shop.Application
+﻿namespace Warehouse.Products.WebApi.Application
 {
     public class DatabaseConnectionSettings
     {

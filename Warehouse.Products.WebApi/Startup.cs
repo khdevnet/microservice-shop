@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Shop.Data;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using Shop.Data.Repositories;
-using Shop.Application;
+using Warehouse.Products.Infrastructure.PostgreSQLDataAccess;
+using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Extensions;
+using Warehouse.Products.WebApi.Application;
 
-namespace Shop
+namespace Warehouse.Products.WebApi
 {
     public class Startup
     {
@@ -17,7 +16,7 @@ namespace Shop
 
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
+            IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
@@ -27,14 +26,11 @@ namespace Shop
 
         public IConfigurationRoot Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("ShopDbContext");
-            services.AddDbContext<ShopDbContext>(options =>
-               options.UseNpgsql(connectionString, b => b.MigrationsAssembly(typeof(ShopDbContext).GetTypeInfo().Assembly.GetName().Name)));
+            string connectionString = Configuration.GetConnectionString("ShopDbContext");
+            services.AddDbContext(connectionString);
 
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -44,22 +40,17 @@ namespace Shop
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
-            // Adds services required for using options.
+
             services.AddOptions();
 
-            // Register the IConfiguration instance which MyOptions binds against.
             services.Configure<DatabaseConnectionSettings>(Configuration.GetSection("ConnectionStrings"));
 
             services.AddMvc();
         }
 
-        public static void ApplyDbMigrations(IApplicationBuilder app)
+        public void ConfigureContainer(ContainerBuilder builder)
         {
-            //using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            //{
-            //    var context = serviceScope.ServiceProvider.GetRequiredService<ShopDbContext>();
-            //    context.Database.Migrate();
-            //}
+            builder.RegisterModule<PostgreSQLDataAccessAutofacModule>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +58,7 @@ namespace Shop
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            //ApplyDbMigrations(app);
+            app.ApplyDbMigrations();
             app.UseCors(CorsPolicyName);
             app.UseMvc();
         }

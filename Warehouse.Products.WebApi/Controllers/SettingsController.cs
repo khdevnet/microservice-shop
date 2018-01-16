@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Shop.Application;
+using Warehouse.Products.WebApi.Application;
 
-namespace Shop.Controllers
+namespace Warehouse.Products.WebApi.Controllers
 {
     [Route("api/settings")]
     public class SettingsController : Controller

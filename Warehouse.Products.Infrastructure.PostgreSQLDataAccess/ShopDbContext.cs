@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.Data.Models;
+using Warehouse.Products.Domain.Models;
 
-namespace Shop.Data
+namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess
 {
     public class ShopDbContext : DbContext
     {

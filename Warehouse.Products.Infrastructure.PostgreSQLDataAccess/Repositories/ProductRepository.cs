@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Shop.Data.Models;
 using System.Linq;
+using Warehouse.Products.Domain.Extensibility.Repositories;
+using Warehouse.Products.Domain.Models;
 
-namespace Shop.Data.Repositories
+namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Repositories
 {
-    public class ProductRepository : IProductRepository
+    internal class ProductRepository : IProductRepository
     {
         private readonly ShopDbContext context;
 

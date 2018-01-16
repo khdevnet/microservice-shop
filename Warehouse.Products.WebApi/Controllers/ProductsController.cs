@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using Shop.Data.Repositories;
 using System.Linq;
-using Shop.Data.Models;
+using Microsoft.AspNetCore.Mvc;
+using Warehouse.Products.Domain.Extensibility.Repositories;
+using Warehouse.Products.Domain.Models;
 
-namespace Shop.Controllers
+namespace Warehouse.Products.WebApi.Controllers
 {
     [Route("api/products")]
     public class ProductsController : Controller
