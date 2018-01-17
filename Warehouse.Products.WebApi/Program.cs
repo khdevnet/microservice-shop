@@ -1,5 +1,5 @@
-﻿using System.IO;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Warehouse.Products.WebApi
@@ -8,16 +8,13 @@ namespace Warehouse.Products.WebApi
     {
         public static void Main(string[] args)
         {
-            IWebHost host = new WebHostBuilder()
-                .UseKestrel()
-                .ConfigureServices(services => services.AddAutofac())
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseApplicationInsights()
-                .Build();
-
-            host.Run();
+            BuildWebHost(args).Run();
         }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices(services => services.AddAutofac())
+                .UseStartup<Startup>()
+                .Build();
     }
 }

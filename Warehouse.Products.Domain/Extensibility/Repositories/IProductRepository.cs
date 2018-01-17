@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Warehouse.Products.Domain.Models;
+using Warehouse.Products.Domain.Entities;
 
 namespace Warehouse.Products.Domain.Extensibility.Repositories
 {

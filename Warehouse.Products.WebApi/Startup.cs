@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Warehouse.Products.Infrastructure.PostgreSQLDataAccess;
-using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Extensions;
-using Warehouse.Products.WebApi.Application;
+using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using Warehouse.Products.WebApi.Configurations;
 
 namespace Warehouse.Products.WebApi
 {
@@ -14,21 +14,16 @@ namespace Warehouse.Products.WebApi
     {
         private const string CorsPolicyName = "CorsPolicy";
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("ShopDbContext");
+            string connectionString = Configuration.GetConnectionString(nameof(ProductDbContext));
             services.AddDbContext(connectionString);
 
             services.AddCors(options =>
@@ -42,8 +37,6 @@ namespace Warehouse.Products.WebApi
             });
 
             services.AddOptions();
-
-            services.Configure<DatabaseConnectionSettings>(Configuration.GetSection("ConnectionStrings"));
 
             services.AddMvc();
         }
