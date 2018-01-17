@@ -1,21 +1,25 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
-namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Extensions
+namespace Warehouse.Products.WebApi.Configurations
 {
     public static class DatabaseConfigurationExtensions
     {
         public static void AddDbContext(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<ShopDbContext>(options => options.UseNpgsql(connectionString), ServiceLifetime.Transient);
+            services
+                .AddDbContext<ProductDbContext>(
+                options => options.UseNpgsql(connectionString, b => b.MigrationsAssembly(typeof(ProductDbContext).GetTypeInfo().Assembly.GetName().Name)));
         }
 
         public static void ApplyDbMigrations(this IApplicationBuilder app)
         {
             using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                ShopDbContext context = serviceScope.ServiceProvider.GetRequiredService<ShopDbContext>();
+                ProductDbContext context = serviceScope.ServiceProvider.GetRequiredService<ProductDbContext>();
                 context.Database.Migrate();
             }
         }
