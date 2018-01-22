@@ -3,7 +3,7 @@ using Warehouse.Products.Domain.Entities;
 
 namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
 {
-    public static class ProductModelBuilder
+    public static class ProductEntityBuilder
     {
         public static void BuildProduct(this ModelBuilder modelBuilder)
         {
@@ -45,6 +45,10 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
                 .Property(p => p.Count)
                 .HasColumnName("count")
                 .IsRequired();
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(b => b.Products);
         }
     }
 }

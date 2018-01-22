@@ -4,9 +4,9 @@ using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
 namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Repositories
 {
-    internal class ProductRepository : CrudRepository<Product>, IProductRepository
+    internal class CategoryRepository : CrudRepository<Category>, ICategoryRepository
     {
-        internal ProductRepository(ProductDbContext context) : base(context)
+        internal CategoryRepository(ProductDbContext context) : base(context)
         {
         }
     }

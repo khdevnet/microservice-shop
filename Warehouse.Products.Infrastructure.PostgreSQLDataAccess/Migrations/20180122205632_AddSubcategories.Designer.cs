@@ -11,9 +11,10 @@ using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
 namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180122205632_AddSubcategories")]
+    partial class AddSubcategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

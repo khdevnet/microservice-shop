@@ -9,6 +9,7 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<ProductRepository>().As<IProductRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
         }
     }
 }
