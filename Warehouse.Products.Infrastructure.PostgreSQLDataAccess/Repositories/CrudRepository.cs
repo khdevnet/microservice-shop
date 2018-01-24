@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Warehouse.Products.Domain.Extensibility.Repositories;
 using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
 namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Repositories
 {
-    internal class CrudRepository<TEntity> where TEntity : class
+    internal class CrudRepository<TEntity, TId> : ICrudRepository<TEntity, TId>
+        where TEntity : class
     {
         private readonly ProductDbContext context;
 
@@ -20,13 +22,14 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Repositories
             return entity;
         }
 
-        public int Delete(int id)
+        public TId Delete(TId id)
         {
             context.Remove(Get(id));
-            return context.SaveChanges();
+            context.SaveChanges();
+            return id;
         }
 
-        public TEntity Get(int id)
+        public TEntity Get(TId id)
         {
             return context.Set<TEntity>().Find(id);
         }

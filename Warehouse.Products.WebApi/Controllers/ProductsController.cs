@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Warehouse.Products.Domain.Extensibility.Repositories;
 using Warehouse.Products.Domain.Entities;
@@ -7,41 +6,10 @@ using Warehouse.Products.Domain.Entities;
 namespace Warehouse.Products.WebApi.Controllers
 {
     [Route("api/products")]
-    public class ProductsController : Controller
+    public class ProductsController : CrudController<Product, Guid>
     {
-        private readonly IProductRepository productRepository;
-
-        public ProductsController(IProductRepository productRepository)
+        public ProductsController(ICrudRepository<Product, Guid> crudRepository) : base(crudRepository)
         {
-            this.productRepository = productRepository;
-        }
-
-        // GET api/products
-        [HttpGet]
-        public IEnumerable<Product> Get()
-        {
-            return productRepository.Get().ToList();
-        }
-
-        // GET api/products/5
-        [HttpGet("{id}")]
-        public Product Get(int id)
-        {
-            return productRepository.Get(id);
-        }
-
-        // POST api/products
-        [HttpPost]
-        public void Post([FromBody]Product product)
-        {
-            productRepository.Add(product);
-        }
-
-        // DELETE api/products/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            productRepository.Delete(id);
         }
     }
 }
