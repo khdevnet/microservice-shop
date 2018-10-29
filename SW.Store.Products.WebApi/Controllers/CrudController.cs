@@ -15,7 +15,7 @@ namespace SW.Store.Products.WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TEntity> Get()
+        public virtual IEnumerable<TEntity> Get()
         {
             return crudRepository.Get().ToList();
         }

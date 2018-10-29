@@ -39,6 +39,7 @@ namespace SW.Store.Products.WebApi
             services.AddOptions();
 
             services.AddMvc();
+            services.AddApiVersioning();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -52,6 +53,7 @@ namespace SW.Store.Products.WebApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.ApplyDbMigrations();
+            app.UseStaticFiles();
             app.UseCors(CorsPolicyName);
             app.UseMvc();
         }
