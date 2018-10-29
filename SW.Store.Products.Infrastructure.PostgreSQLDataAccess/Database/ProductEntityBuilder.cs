@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Warehouse.Products.Domain.Entities;
+using SW.Store.Products.Domain.Entities;
 
-namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
+namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database
 {
     public static class ProductEntityBuilder
     {
@@ -17,15 +17,6 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
                 .HasKey(p => p.Id);
 
             modelBuilder.Entity<Product>()
-                .Property(b => b.Sku)
-                .HasColumnName("sku")
-                .HasMaxLength(255);
-
-            modelBuilder.Entity<Product>()
-                .HasIndex(p => p.Sku)
-                .IsUnique();
-
-            modelBuilder.Entity<Product>()
                 .Property(p => p.Name)
                 .HasColumnName("name")
                 .HasMaxLength(255)
@@ -35,20 +26,6 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
                 .Property(p => p.Price)
                 .HasColumnName("price")
                 .IsRequired();
-
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Description)
-                .HasColumnName("description")
-                .IsRequired();
-
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Count)
-                .HasColumnName("count")
-                .IsRequired();
-
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.Category)
-                .WithMany(b => b.Products);
         }
     }
 }

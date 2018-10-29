@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Products.WebApi", "Warehouse.Products.WebApi\Warehouse.Products.WebApi.csproj", "{2B6EBD2F-DE42-4A4B-85ED-E96FB061936B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.WebApi", "SW.Store.Products.WebApi\SW.Store.Products.WebApi.csproj", "{2B6EBD2F-DE42-4A4B-85ED-E96FB061936B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Products.Domain", "Warehouse.Products.Domain\Warehouse.Products.Domain.csproj", "{FB0C6B1A-92EF-4575-816B-4A2615A6C2C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Domain", "SW.Store.Products.Domain\SW.Store.Products.Domain.csproj", "{FB0C6B1A-92EF-4575-816B-4A2615A6C2C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Products.Infrastructure.PostgreSQLDataAccess", "Warehouse.Products.Infrastructure.PostgreSQLDataAccess\Warehouse.Products.Infrastructure.PostgreSQLDataAccess.csproj", "{D8D90C7B-FE80-4E9E-9088-8FC6FDEB3081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Infrastructure.PostgreSQLDataAccess", "SW.Store.Products.Infrastructure.PostgreSQLDataAccess\SW.Store.Products.Infrastructure.PostgreSQLDataAccess.csproj", "{D8D90C7B-FE80-4E9E-9088-8FC6FDEB3081}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Products.Tests", "Warehouse.Products.Tests\Warehouse.Products.Tests.csproj", "{27D5D77D-2CF1-4CFE-90DF-A938D88FA2FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Tests", "SW.Store.Products.Tests\SW.Store.Products.Tests.csproj", "{27D5D77D-2CF1-4CFE-90DF-A938D88FA2FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

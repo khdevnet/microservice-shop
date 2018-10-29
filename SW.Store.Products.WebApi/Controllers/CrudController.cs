@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Warehouse.Products.Domain.Extensibility.Repositories;
+using SW.Store.Products.Domain.Extensibility.Repositories;
 
-namespace Warehouse.Products.WebApi.Controllers
+namespace SW.Store.Products.WebApi.Controllers
 {
     public class CrudController<TEntity, TId> : Controller where TEntity : class
     {

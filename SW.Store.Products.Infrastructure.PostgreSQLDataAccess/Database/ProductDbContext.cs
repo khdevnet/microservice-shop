@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Warehouse.Products.Domain.Entities;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using SW.Store.Products.Domain.Entities;
 
-namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
+namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database
 {
     public class ProductDbContext : DbContext
     {
@@ -11,14 +12,22 @@ namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.BuildProduct();
-            modelBuilder.BuildCategory();
+
+            var products = new List<Product>
+            {
+                new Product { Id = 1, Name = "R2-D2", Price=200 },
+                new Product { Id = 2, Name = "Speeder", Price=300 },
+                new Product { Id = 3, Name = "BB-8" , Price=400},
+                new Product { Id = 4, Name = "Blaster" , Price=700},
+                new Product { Id = 5, Name = "Death star" , Price=8000}
+            };
+
+            products.ForEach(p => modelBuilder.Entity<Product>().HasData(p));
         }
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Warehouse.Products.Infrastructure.PostgreSQLDataAccess;
-using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
-using Warehouse.Products.WebApi.Configurations;
+using SW.Store.Products.Infrastructure.PostgreSQLDataAccess;
+using SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using SW.Store.Products.WebApi.Configurations;
 
-namespace Warehouse.Products.WebApi
+namespace SW.Store.Products.WebApi
 {
     public class Startup
     {

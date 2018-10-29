@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Warehouse.Products.Domain.Extensibility.Repositories;
-using Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using SW.Store.Products.Domain.Extensibility.Repositories;
+using SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
-namespace Warehouse.Products.Infrastructure.PostgreSQLDataAccess.Repositories
+namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Repositories
 {
     internal class CrudRepository<TEntity, TId> : ICrudRepository<TEntity, TId>
         where TEntity : class

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Warehouse.Products.WebApi
+namespace SW.Store.Products.WebApi
 {
     public class Program
     {
