@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using SW.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
-namespace SW.Store.Products.WebApi.Configurations
+namespace SW.Products.WebApi.Configurations
 {
     public static class DatabaseConfigurationExtensions
     {

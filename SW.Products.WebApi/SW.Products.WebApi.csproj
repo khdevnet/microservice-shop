@@ -5,16 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Dockerfile" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Dockerfile">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
   <ItemGroup>
@@ -30,8 +20,8 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SW.Store.Products.Domain\SW.Store.Products.Domain.csproj" />
-    <ProjectReference Include="..\SW.Store.Products.Infrastructure.PostgreSQLDataAccess\SW.Store.Products.Infrastructure.PostgreSQLDataAccess.csproj" />
+    <ProjectReference Include="..\SW.Products.Domain\SW.Products.Domain.csproj" />
+    <ProjectReference Include="..\SW.Products.Infrastructure.SQL\SW.Products.Infrastructure.SQL.csproj" />
   </ItemGroup>
 
 </Project>

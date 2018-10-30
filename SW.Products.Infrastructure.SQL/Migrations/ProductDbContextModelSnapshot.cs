@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using SW.Products.Infrastructure.PostgreSQLDataAccess.Database;
 
-namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Migrations
+namespace SW.Products.Infrastructure.PostgreSQLDataAccess.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
     partial class ProductDbContextModelSnapshot : ModelSnapshot
@@ -18,7 +18,7 @@ namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("SW.Store.Products.Domain.Entities.Product", b =>
+            modelBuilder.Entity("SW.Products.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

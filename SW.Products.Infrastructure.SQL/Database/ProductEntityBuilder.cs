@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SW.Store.Products.Domain.Entities;
+using SW.Products.Domain.Entities;
 
-namespace SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database
+namespace SW.Products.Infrastructure.PostgreSQLDataAccess.Database
 {
     public static class ProductEntityBuilder
     {

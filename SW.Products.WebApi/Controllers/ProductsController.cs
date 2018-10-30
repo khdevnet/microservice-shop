@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SW.Store.Products.Domain.Entities;
-using SW.Store.Products.Domain.Extensibility.Repositories;
+using SW.Products.Domain.Entities;
+using SW.Products.Domain.Extensibility.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SW.Store.Products.WebApi.Controllers
+namespace SW.Products.WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]

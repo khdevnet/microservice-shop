@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SW.Store.Products.Domain.Extensibility.Repositories
+namespace SW.Products.Domain.Extensibility.Repositories
 {
     public interface ICrudRepository<TEntity, TId> where TEntity : class
     {

@@ -1,8 +1,9 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
-namespace SW.Store.Products.WebApi
+namespace SW.Products.WebApi
 {
     public class Program
     {
@@ -13,6 +14,7 @@ namespace SW.Store.Products.WebApi
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) => config.AddEnvironmentVariables(prefix: "SW_"))
                 .ConfigureServices(services => services.AddAutofac())
                 .UseStartup<Startup>()
                 .Build();

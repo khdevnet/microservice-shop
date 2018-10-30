@@ -1,4 +1,4 @@
-﻿namespace SW.Store.Products.Domain.Entities
+﻿namespace SW.Products.Domain.Entities
 {
     public class ProductModel
     {

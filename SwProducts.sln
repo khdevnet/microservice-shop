@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.WebApi", "SW.Store.Products.WebApi\SW.Store.Products.WebApi.csproj", "{2B6EBD2F-DE42-4A4B-85ED-E96FB061936B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Products.WebApi", "SW.Products.WebApi\SW.Products.WebApi.csproj", "{2B6EBD2F-DE42-4A4B-85ED-E96FB061936B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Domain", "SW.Store.Products.Domain\SW.Store.Products.Domain.csproj", "{FB0C6B1A-92EF-4575-816B-4A2615A6C2C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Products.Domain", "SW.Products.Domain\SW.Products.Domain.csproj", "{FB0C6B1A-92EF-4575-816B-4A2615A6C2C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Infrastructure.PostgreSQLDataAccess", "SW.Store.Products.Infrastructure.PostgreSQLDataAccess\SW.Store.Products.Infrastructure.PostgreSQLDataAccess.csproj", "{D8D90C7B-FE80-4E9E-9088-8FC6FDEB3081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Products.Infrastructure.SQL", "SW.Products.Infrastructure.SQL\SW.Products.Infrastructure.SQL.csproj", "{D8D90C7B-FE80-4E9E-9088-8FC6FDEB3081}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Store.Products.Tests", "SW.Store.Products.Tests\SW.Store.Products.Tests.csproj", "{27D5D77D-2CF1-4CFE-90DF-A938D88FA2FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SW.Products.Tests", "SW.Products.Tests\SW.Products.Tests.csproj", "{27D5D77D-2CF1-4CFE-90DF-A938D88FA2FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C68CF4C-98B0-4D21-ACF7-942D98E10C51}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,16 +4,16 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY ["DockerHost.Web/DockerHost.Web.csproj", "DockerHost.Web/"]
-RUN dotnet restore "DockerHost.Web/DockerHost.Web.csproj"
+COPY ["SW.Products.WebApi/SW.Products.WebApi.csproj", "SW.Products.WebApi/"]
+RUN dotnet restore "SW.Products.WebApi/SW.Products.WebApi.csproj"
 COPY . .
-WORKDIR "/src/DockerHost.Web"
-RUN dotnet build "DockerHost.Web.csproj" -c Release -o /app
+WORKDIR "/src/SW.Products.WebApi"
+RUN dotnet build "SW.Products.WebApi.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "DockerHost.Web.csproj" -c Release -o /app
+RUN dotnet publish "SW.Products.WebApi.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "DockerHost.Web.dll"]
+ENTRYPOINT ["dotnet", "SW.Products.WebApi.dll"]

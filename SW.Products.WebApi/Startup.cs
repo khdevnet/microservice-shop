@@ -1,14 +1,15 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SW.Store.Products.Infrastructure.PostgreSQLDataAccess;
-using SW.Store.Products.Infrastructure.PostgreSQLDataAccess.Database;
-using SW.Store.Products.WebApi.Configurations;
+using SW.Products.Infrastructure.PostgreSQLDataAccess;
+using SW.Products.Infrastructure.PostgreSQLDataAccess.Database;
+using SW.Products.WebApi.Configurations;
 
-namespace SW.Store.Products.WebApi
+namespace SW.Products.WebApi
 {
     public class Startup
     {
@@ -24,6 +25,7 @@ namespace SW.Store.Products.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString(nameof(ProductDbContext));
+
             services.AddDbContext(connectionString);
 
             services.AddCors(options =>
